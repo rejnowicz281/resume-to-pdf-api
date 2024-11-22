@@ -21,7 +21,8 @@
         "helmet": "^8.0.0",
         "nano": "^10.1.4",
         "pino": "^9.5.0",
-        "pino-pretty": "^13.0.0"
+        "pino-pretty": "^13.0.0",
+        "uniqid": "^5.4.0"
     },
     "devDependencies": {
         "@types/compression": "^1.7.5",
@@ -31,6 +32,8 @@
         "@types/dotenv": "^8.2.3",
         "@types/express": "^5.0.0",
         "@types/helmet": "^4.0.0",
+        "@types/nano": "^7.0.0",
+        "@types/uniqid": "^5.3.4",
         "ts-node-dev": "^2.0.0",
         "typescript": "^5.6.3"
     }

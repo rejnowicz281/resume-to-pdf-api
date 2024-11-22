@@ -1,10 +1,12 @@
-import config from "config";
+// prettier-ignore
 import dotenv from "dotenv";
+dotenv.config();
+
+import config from "config";
 import express from "express";
 import routes from "./routes";
 import logger from "./utils/logger";
 import middleware from "./utils/middleware";
-dotenv.config();
 
 const port = config.get("port");
 
