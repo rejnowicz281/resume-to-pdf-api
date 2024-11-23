@@ -5,7 +5,9 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-        "build": "tsc"
+        "build": "tsc",
+        "start": "node build/src/app.js",
+        "postinstall": "tsc"
     },
     "author": "",
     "license": "ISC",
@@ -23,6 +25,9 @@
         "pino": "^9.5.0",
         "pino-pretty": "^13.0.0",
         "uniqid": "^5.4.0"
+    },
+    "engines": {
+        "node": "22.x"
     },
     "devDependencies": {
         "@types/compression": "^1.7.5",
