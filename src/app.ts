@@ -8,7 +8,7 @@ import routes from "./routes";
 import logger from "./utils/logger";
 import middleware from "./utils/middleware";
 
-const port = config.get("port");
+const port = config.get("port") || 3000;
 
 const app = express();
 
