@@ -20,11 +20,14 @@
         "dotenv": "^16.4.5",
         "express": "^4.21.1",
         "helmet": "^8.0.0",
+        "jsonwebtoken": "^9.0.2",
         "nano": "^10.1.4",
+        "passport": "^0.7.0",
+        "passport-jwt": "^4.0.1",
         "pino": "^9.5.0",
         "pino-pretty": "^13.0.0",
-        "uniqid": "^5.4.0",
-        "ts-node": "^10.9.2"
+        "ts-node": "^10.9.2",
+        "uniqid": "^5.4.0"
     },
     "engines": {
         "node": "22.x"
@@ -36,7 +39,10 @@
         "@types/dotenv": "^8.2.3",
         "@types/express": "^5.0.0",
         "@types/helmet": "^4.0.0",
+        "@types/jsonwebtoken": "^9.0.7",
         "@types/nano": "^7.0.0",
+        "@types/passport": "^1.0.17",
+        "@types/passport-jwt": "^4.0.1",
         "@types/uniqid": "^5.3.4",
         "ts-node-dev": "^2.0.0",
         "typescript": "^5.6.3"

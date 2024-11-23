@@ -1,7 +1,11 @@
 import * as _nano from "nano";
 import { DB_URI } from "./config";
 
-const nano = _nano.default(DB_URI);
+export const createNanoInstance = (dbUri = DB_URI) => {
+    return _nano.default(dbUri);
+};
+
+const nano = createNanoInstance();
 
 export const users = nano.db.use("_users");
 

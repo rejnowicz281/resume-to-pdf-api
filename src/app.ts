@@ -7,8 +7,11 @@ import routes from "./routes";
 import { DB_URI, PORT } from "./utils/config";
 import logger from "./utils/logger";
 import middleware from "./utils/middleware";
+import usePassport from "./utils/passport";
 
 const app = express();
+
+usePassport();
 
 middleware(app);
 
