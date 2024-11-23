@@ -2,21 +2,18 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import config from "config";
 import express from "express";
 import routes from "./routes";
+import { DB_URI, PORT } from "./utils/config";
 import logger from "./utils/logger";
 import middleware from "./utils/middleware";
-
-const port = process.env.PORT || 3000;
-const dbUri = config.get("dbUri");
 
 const app = express();
 
 middleware(app);
 
-app.listen(port, async () => {
-    logger.info(`Server running on port ${port}, connecting to ${dbUri}`);
+app.listen(PORT, async () => {
+    logger.info(`Server running on port ${PORT}, connecting to ${DB_URI}`);
 
     routes(app);
 });
