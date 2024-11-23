@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import log from "../utils/logger";
 import nano, { users } from "../utils/nano";
 
-export const register = async (req: Request, res: Response, next: NextFunction) => {
+export const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
         const { username, password } = req.body;
 
