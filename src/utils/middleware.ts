@@ -8,7 +8,12 @@ export default function middleware(app: Express) {
     app.use(express.json());
     app.use(
         cors({
-            origin: true,
+            origin: [
+                "http://localhost:5173",
+                "http://localhost:4173",
+                "https://resume-to-pdf.netlify.app",
+                "https://test--resume-to-pdf.netlify.app"
+            ],
             credentials: true
         })
     );
