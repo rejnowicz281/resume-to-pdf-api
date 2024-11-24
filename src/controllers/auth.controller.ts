@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { User } from "../types/user";
 import { generateAccessToken, generateRefreshToken, refreshTokenOptions } from "../utils/jwt.utils";
 import log from "../utils/logger";
 import nano, { createNanoInstance, users } from "../utils/nano";
@@ -74,7 +75,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
 };
 
 export const refresh = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const user = req.user;
+    const user = req.user as User;
 
     const username = user.name;
 
