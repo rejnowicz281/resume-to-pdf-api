@@ -2,6 +2,7 @@ import { Request } from "express";
 import { JwtPayload } from "jsonwebtoken";
 import { MangoResponse } from "nano";
 import passport, { DoneCallback } from "passport";
+// @ts-ignore
 import GithubTokenStrategy from "passport-github-token";
 import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt";
 import { User } from "../types/user";

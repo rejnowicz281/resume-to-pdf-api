@@ -1,5 +1,6 @@
 import axios from "axios";
 import { NextFunction, Request, Response } from "express";
+// @ts-ignore
 import queryString from "query-string";
 import { User } from "../types/user";
 import { createUserWithDb } from "../utils/couchdb.utils";
