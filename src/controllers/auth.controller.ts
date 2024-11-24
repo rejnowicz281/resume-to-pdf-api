@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { User } from "../types/user";
 import { generateAccessToken, generateRefreshToken, refreshTokenOptions } from "../utils/jwt.utils";
-import log from "../utils/logger";
+import logger from "../utils/logger";
 import nano, { createNanoInstance, users } from "../utils/nano";
 
 export const register = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -41,13 +41,13 @@ export const register = async (req: Request, res: Response, next: NextFunction):
         const refreshToken = generateRefreshToken(username);
         const accessToken = generateAccessToken(username);
 
-        return res
-            .cookie("refreshToken", refreshToken, refreshTokenOptions)
-            .status(200)
-            .json({ message: "Registration successful", accessToken });
+        const result = { message: "Registration successful", accessToken };
+        logger.info(result);
+
+        return res.cookie("refreshToken", refreshToken, refreshTokenOptions).status(200).json(result);
     } catch (error: any) {
-        log.error("Registration failed", error);
-        return res.status(400).json({ error });
+        logger.error("Registration failed", error.reason);
+        return res.status(400).json({ error: error.reason });
     }
 };
 
@@ -69,8 +69,8 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
             .status(200)
             .json({ message: "Login successful", accessToken });
     } catch (error: any) {
-        log.error("Login failed", error);
-        return res.status(400).json({ error });
+        logger.error("Login failed", error.reason);
+        return res.status(400).json({ error: error.reason });
     }
 };
 
@@ -80,11 +80,14 @@ export const refresh = async (req: Request, res: Response, next: NextFunction): 
     const username = user.name;
 
     const accessToken = generateAccessToken(username);
-    console.log("sending new access token", accessToken);
 
-    return res.status(200).json({ message: "Token refresh successful", accessToken });
+    const result = { message: "Token refresh successful", accessToken };
+    logger.info(result);
+    return res.status(200).json(result);
 };
 
 export const logout = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    return res.clearCookie("refreshToken").status(200).json({ message: "Logout successful" });
+    const result = { message: "Logout successful" };
+    logger.info(result);
+    return res.clearCookie("refreshToken").status(200).json(result);
 };

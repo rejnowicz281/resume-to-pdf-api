@@ -3,7 +3,7 @@ import passport, { DoneCallback } from "passport";
 import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt";
 import { getUserId } from "./couchdb.utils";
 import { refreshTokenExtractor } from "./jwt.utils";
-import log from "./logger";
+import logger from "./logger";
 import { users } from "./nano";
 
 const jwtAccessToken = () => {
@@ -24,10 +24,10 @@ const jwtAccessToken = () => {
                     const user = await users.get(userId);
 
                     if (user && user._deleted !== true) {
-                        log.info("Access token valid - proceeding...");
+                        logger.info("Access token valid - proceeding...");
                         return done(null, { name: username });
                     } else {
-                        log.info("Access token invalid - aborting...");
+                        logger.info("Access token invalid - aborting...");
                         return done(null, false);
                     }
                 } catch (error) {
@@ -56,10 +56,10 @@ const jwtRefreshToken = () => {
                     const user = await users.get(userId);
 
                     if (user && user._deleted !== true) {
-                        log.info("Refresh token valid - proceeding...");
+                        logger.info("Refresh token valid - proceeding...");
                         return done(null, { name: username });
                     } else {
-                        log.info("Refresh token invalid - aborting...");
+                        logger.info("Refresh token invalid - aborting...");
                         return done(null, false);
                     }
                 } catch (error) {
