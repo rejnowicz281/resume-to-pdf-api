@@ -40,10 +40,10 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
         const refreshToken = generateRefreshToken(username);
         const accessToken = generateAccessToken(username);
 
-        return res
-            .cookie("refreshToken", refreshToken, refreshTokenOptions)
-            .status(200)
-            .json({ message: "Login successful", accessToken });
+        const data = { message: "Login successful", accessToken };
+        logger.info(data);
+
+        return res.cookie("refreshToken", refreshToken, refreshTokenOptions).status(200).json(data);
     } catch (error: any) {
         logger.error("Login failed", error.reason);
         return res.status(400).json({ error: error.reason });
@@ -65,7 +65,7 @@ export const refresh = async (req: Request, res: Response, next: NextFunction): 
 export const logout = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     const data = { message: "Logout successful" };
     logger.info(data);
-    return res.clearCookie("refreshToken").status(200).json(data);
+    return res.clearCookie("refreshToken", refreshTokenOptions).status(200).json(data);
 };
 
 export const getGithubToken = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
