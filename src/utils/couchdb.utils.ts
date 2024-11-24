@@ -15,9 +15,7 @@ export const createUserWithDb = async (username: string, additionalInfo?: Record
         ...additionalInfo
     };
 
-    await users.insert(userDoc);
-
-    await nano.db.create(dbName);
+    await Promise.all([users.insert(userDoc), nano.db.create(dbName)]);
 
     await nano.request({
         db: dbName,
