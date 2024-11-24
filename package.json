@@ -6,8 +6,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
         "build": "tsc",
-        "start": "node build/app.js",
-        "postinstall": "tsc"
+        "start": "tsc && node build/app.js"
     },
     "author": "",
     "license": "ISC",
@@ -23,9 +22,11 @@
         "jsonwebtoken": "^9.0.2",
         "nano": "^10.1.4",
         "passport": "^0.7.0",
+        "passport-github-token": "^3.0.0",
         "passport-jwt": "^4.0.1",
         "pino": "^9.5.0",
         "pino-pretty": "^13.0.0",
+        "query-string": "6.0",
         "ts-node": "^10.9.2",
         "uniqid": "^5.4.0"
     },
@@ -43,6 +44,7 @@
         "@types/nano": "^7.0.0",
         "@types/passport": "^1.0.17",
         "@types/passport-jwt": "^4.0.1",
+        "@types/query-string": "^6.3.0",
         "@types/uniqid": "^5.3.4",
         "ts-node-dev": "^2.0.0",
         "typescript": "^5.6.3"
